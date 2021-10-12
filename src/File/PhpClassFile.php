@@ -130,8 +130,8 @@ class PhpClassFile extends SplFileInfo
         $contents = file_get_contents($this->getRealPath());
         $tokens   = token_get_all($contents);
         $count    = count($tokens);
-        $t_trait  = defined('T_TRAIT') ? T_TRAIT : -1; // For preserve PHP 5.3 compatibility
-        
+        $t_name_qualified = defined('T_NAME_QUALIFIED') ? T_NAME_QUALIFIED : -1; // For preserve PHP 7.4 compatibility
+
         for ($i = 0; $i < $count; $i++) {
             $token = $tokens[$i];
             
@@ -160,6 +160,7 @@ class PhpClassFile extends SplFileInfo
                         }
                         list($type, $content, $line) = $token;
                         switch ($type) {
+                            case $t_name_qualified:
                             case T_STRING:
                             case T_NS_SEPARATOR:
                                 $namespace .= $content;
@@ -171,7 +172,7 @@ class PhpClassFile extends SplFileInfo
                     }
                     break;
                     
-                case $t_trait:
+                case T_TRAIT:
                 case T_CLASS:
                 case T_INTERFACE:
                     // Abstract class, class, interface or trait found
