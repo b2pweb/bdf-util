@@ -46,14 +46,14 @@ class BdfStyle extends SymfonyStyle
     /**
      * Format input to textual table
      *
-     * @param array|\Closure $headers  Could be a closure for custom table. Default style are set.
+     * @param array $headers
      * @param array  $rows
      * @param string $style
      * @param array  $columnWidths
      *
      * @return Table
      */
-    public function createTable(array $headers, array $rows = [], $style = 'box', array $columnWidths = []): Table
+    public function createTable(array $headers = [], array $rows = [], $style = 'box', array $columnWidths = []): Table
     {
         $table = new Table($this);
         $table->setHeaders($headers);
