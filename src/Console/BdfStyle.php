@@ -73,7 +73,7 @@ class BdfStyle extends SymfonyStyle
      * @param array $headers  Could be a closure for custom table. Default style are set.
      * @param array  $rows
      */
-    public function table(array $headers, array $rows = [])
+    public function table(array $headers, array $rows = []): void
     {
         $this->createTable($headers, $rows)->render();
     }
@@ -84,7 +84,7 @@ class BdfStyle extends SymfonyStyle
      * @param array $headers
      * @param array $rows
      */
-    public function horizontalTable(array $headers, array $rows)
+    public function horizontalTable(array $headers, array $rows): void
     {
         $this->createTable($headers, $rows)->setHorizontal(true)->render();
     }
@@ -156,7 +156,7 @@ class BdfStyle extends SymfonyStyle
     /**
      * {@inheritdoc}
      */
-    public function success($message, ...$parameters)
+    public function success($message, ...$parameters): void
     {
         parent::success($this->prepareOutputText($message, $parameters));
     }
@@ -164,7 +164,7 @@ class BdfStyle extends SymfonyStyle
     /**
      * {@inheritdoc}
      */
-    public function error($message, ...$parameters)
+    public function error($message, ...$parameters): void
     {
         parent::error($this->prepareOutputText($message, $parameters));
     }
@@ -172,7 +172,7 @@ class BdfStyle extends SymfonyStyle
     /**
      * {@inheritdoc}
      */
-    public function warning($message, ...$parameters)
+    public function warning($message, ...$parameters): void
     {
         parent::warning($this->prepareOutputText($message, $parameters));
     }
@@ -180,7 +180,7 @@ class BdfStyle extends SymfonyStyle
     /**
      * {@inheritdoc}
      */
-    public function note($message, ...$parameters)
+    public function note($message, ...$parameters): void
     {
         parent::note($this->prepareOutputText($message, $parameters));
     }
@@ -188,7 +188,7 @@ class BdfStyle extends SymfonyStyle
     /**
      * {@inheritdoc}
      */
-    public function caution($message, ...$parameters)
+    public function caution($message, ...$parameters): void
     {
         parent::caution($this->prepareOutputText($message, $parameters));
     }
@@ -199,7 +199,7 @@ class BdfStyle extends SymfonyStyle
      * @param string $string
      * @param int $verbosity
      */
-    public function debug($string, $verbosity = OutputInterface::VERBOSITY_VERY_VERBOSE)
+    public function debug($string, $verbosity = OutputInterface::VERBOSITY_VERY_VERBOSE): void
     {
         if ($this->output->getVerbosity() >= $verbosity) {
             $this->output->writeln("<debug>$string</debug>");
@@ -212,7 +212,7 @@ class BdfStyle extends SymfonyStyle
      * @param string $string
      * @param array $parameters
      */
-    public function info($string, ...$parameters)
+    public function info($string, ...$parameters): void
     {
         $this->line("<info>$string</info>", ...$parameters);
     }
@@ -223,7 +223,7 @@ class BdfStyle extends SymfonyStyle
      * @param string $string
      * @param array $parameters
      */
-    public function comment($string, ...$parameters)
+    public function comment($string, ...$parameters): void
     {
         $this->line("<comment>$string</comment>", ...$parameters);
     }
@@ -234,7 +234,7 @@ class BdfStyle extends SymfonyStyle
      * @param string $string
      * @param array $parameters
      */
-    public function alert($string, ...$parameters)
+    public function alert($string, ...$parameters): void
     {
         $this->line("<alert>$string</alert>", ...$parameters);
     }
