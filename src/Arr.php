@@ -156,7 +156,7 @@ class Arr
      * 
      * @return mixed
      */
-    public static function first($array, callable $callback = null, $default = null)
+    public static function first($array, ?callable $callback = null, $default = null)
     {
         if ($callback === null) {
             $callback = function() { return true; };
@@ -180,7 +180,7 @@ class Arr
      * 
      * @return mixed
      */
-    public static function last($array, callable $callback = null, $default = null)
+    public static function last($array, ?callable $callback = null, $default = null)
     {
         return static::first(array_reverse($array), $callback, $default);
     }
